@@ -174,7 +174,7 @@ export const requestGraphql = async (owner, repo) => {
           let nodes = history.nodes;
 
           nodes.forEach((node) => {
-            const { author } = node;
+            const { author, committedDate } = node;
             const { email, name, user } = author;
 
             if (!userList[name]) {
@@ -184,7 +184,12 @@ export const requestGraphql = async (owner, repo) => {
                 location: user ? user.location : null,
                 username: user ? user.name : null,
                 avatarUrl: user ? user.avatarUrl : null,
+                committedDate: committedDate,
               };
+            } else {
+              if (committedDate > userList[name].committedDate) {
+                userList[name].committedDate = committedDate;
+              }
             }
           });
 

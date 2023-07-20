@@ -37,6 +37,14 @@ function App() {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+
+      fetchStatics();
+    }
+  };
+
   return (
     <Container>
       <Paper
@@ -54,6 +62,7 @@ function App() {
           placeholder="Input git repo"
           inputProps={{ "aria-label": "search git users" }}
           onChange={(e) => setUrl(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <IconButton
           type="button"

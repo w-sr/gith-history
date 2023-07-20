@@ -1,11 +1,11 @@
-import { Avatar, Container } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 const columns = [
   {
     field: "name",
     headerName: "Name",
-    width: 250,
+    width: 200,
   },
   {
     field: "avatarUrl",
@@ -23,12 +23,17 @@ const columns = [
   {
     field: "location",
     headerName: "Location",
-    width: 250,
+    width: 200,
   },
   {
     field: "username",
     headerName: "Username",
-    width: 250,
+    width: 200,
+  },
+  {
+    field: "committedDate",
+    headerName: "Last Commit",
+    width: 200,
   },
 ];
 
@@ -38,23 +43,7 @@ const GitUserGrid = ({ data }) => {
     ...item,
   }));
 
-  return (
-    <Container>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 10,
-            },
-          },
-        }}
-        pageSizeOptions={[10]}
-        disableRowSelectionOnClick
-      />
-    </Container>
-  );
+  return <DataGrid rows={rows} columns={columns} disableRowSelectionOnClick />;
 };
 
 export default GitUserGrid;
