@@ -28,7 +28,9 @@ function App() {
     setLoading(true);
 
     try {
-      const result = await requestGraphql(username, repoName);
+      const result = await requestGraphql(
+        `/repos/${username}/${repoName}/contributors`
+      );
       setData(result);
     } catch (error) {
       console.log(error);

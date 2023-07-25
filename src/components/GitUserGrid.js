@@ -3,17 +3,17 @@ import { DataGrid } from "@mui/x-data-grid";
 
 const columns = [
   {
-    field: "name",
-    headerName: "Name",
-    width: 200,
-  },
-  {
     field: "avatarUrl",
     headerName: "",
     width: 80,
     renderCell: (params) => {
       return <Avatar src={params.row.avatarUrl} />;
     },
+  },
+  {
+    field: "name",
+    headerName: "Name",
+    width: 200,
   },
   {
     field: "email",
@@ -26,7 +26,7 @@ const columns = [
     width: 200,
   },
   {
-    field: "username",
+    field: "login",
     headerName: "Username",
     width: 200,
   },
