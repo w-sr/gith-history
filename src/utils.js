@@ -18,7 +18,12 @@ const nodeQuery = `
         status {
           message
         }
-        socialAccounts(first: 0) {
+        commitComments(last:1) {
+          nodes {
+            createdAt
+          }
+        }
+        socialAccounts(first:10) {
           nodes {
             displayName
             url

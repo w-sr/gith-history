@@ -48,7 +48,7 @@ function App() {
   };
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Paper
         component="form"
         sx={{
@@ -56,12 +56,12 @@ function App() {
           display: "flex",
           alignItems: "center",
           margin: "16px 0",
-          width: 400,
+          width: 550,
         }}
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
-          placeholder="Input git repo"
+          placeholder="Input repo and then try to click search icon or press Enter key"
           inputProps={{ "aria-label": "search git users" }}
           onChange={(e) => setUrl(e.target.value)}
           onKeyDown={handleKeyDown}
