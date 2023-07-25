@@ -10,10 +10,21 @@ const nodeQuery = `
     nodes(ids: $ids) {
       ... on User {
         name
+        createdAt
         login
         location
         avatarUrl
         email
+        status {
+          message
+        }
+        socialAccounts(first: 0) {
+          nodes {
+            displayName
+            url
+            provider
+          }
+        }
       }
     }
   }
@@ -90,19 +101,12 @@ export const requestGraphql = async (url) => {
 };
 
 function parseData(data) {
-  // If the data is an array, return that
   if (Array.isArray(data)) {
     return data;
   }
 
-  // Some endpoints respond with 204 No Content instead of empty array
-  //   when there is no data. In that case, return an empty array.
-  if (!data) {
-    return [];
-  }
+  if (!data) return [];
 
-  // Otherwise, the array of items that we want is in an object
-  // Delete keys that don't include the array of items
   delete data.incomplete_results;
   delete data.repository_selection;
   delete data.total_count;

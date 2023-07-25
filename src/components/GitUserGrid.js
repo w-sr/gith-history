@@ -28,11 +28,16 @@ const columns = [
   {
     field: "login",
     headerName: "Username",
-    width: 200,
+    width: 120,
   },
   {
-    field: "committedDate",
-    headerName: "Last Commit",
+    field: "createdAt",
+    headerName: "Joined Date",
+    width: 120,
+  },
+  {
+    field: "message",
+    headerName: "Bio",
     width: 200,
   },
 ];
@@ -40,7 +45,13 @@ const columns = [
 const GitUserGrid = ({ data }) => {
   const rows = data.map((item, index) => ({
     id: index,
-    ...item,
+    name: item.name,
+    avatarUrl: item.avatarUrl,
+    email: item.email,
+    location: item.location,
+    login: item.login,
+    createdAt: item.createdAt ? item.createdAt.split("T")[0] : "",
+    message: item.status ? item.status.message : "",
   }));
 
   return <DataGrid rows={rows} columns={columns} disableRowSelectionOnClick />;
