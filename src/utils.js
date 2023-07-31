@@ -3,7 +3,7 @@ import { Octokit } from "@octokit/rest";
 const RESTRICT_EMAILS = ["users.noreply.github.com"];
 const RESTRICT_LOCATIONS = ["korea", "seoul", "china"];
 
-const accessToken = "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";
+const accessToken = process.env.REACT_APP_GITHUB_TOKEN ?? "";
 
 const nodeQuery = `
   query($ids:[ID!]!) {
